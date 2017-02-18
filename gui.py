@@ -3,9 +3,8 @@ Q=113
 blue_color = (97, 159, 182)
 class Screen(object):
     def __init__(self):
-        blue_color = (97, 159, 182)
+        blue_color = (18, 186, 231)
         sundry = pygame.init()
-        # self.icons = Icons()
         self.sstimeout = time.time()
         self.ssactive = False
         self.width = pygame.display.Info().current_w
@@ -27,9 +26,6 @@ class Screen(object):
             self.screen.fill((0,0,0,))
         else:
             self.screen.fill(blue_color)
-            # gb = pygame.image.load('green_round_button.png').convert_alpha()
-            # gb =pygame.transform.scale(gb,(75,75))
-            # self.screen.blit((gb),(400, 300))
             font = pygame.font.Font(None, 45)
             font = pygame.font.SysFont("Vera", 45)
             text = font.render(self.page.title, True, (0,255, 0))
@@ -39,9 +35,11 @@ class Screen(object):
             for button in self.page.buttons:
                 button.render(self.screen)
         pygame.display.update()
+
     def detect_selection(self,coords):
         self.sstimeout = time.time()
         self.ssactive = False
+
         for button in self.page.buttons:
             x = button.detect_selection(coords)[0]
             if x >0:
@@ -111,7 +109,8 @@ class Circle(Button):
         self.r = r
         Button.__init__(self,x,y,text,value)
     def render(self,screen):
-        pygame.gfxdraw.filled_circle(screen,self.x,self.y,self.r,(129, 138, 148))
+        # pygame.gfxdraw.filled_circle(screen,self.x,self.y,self.r,(129, 138, 148))
+        pygame.draw.circle(screen,(129, 138, 148),(self.x,self.y),self.r,1)
     def detect_selection(self,coords):
         a = coords[0]
         b = coords[1]
@@ -123,21 +122,46 @@ class Circle(Button):
 class Icons(object):
     def __init__(self):
         self.grb = pygame.image.load('green_round_button.png').convert_alpha()
+        self.yrb = pygame.image.load('yellow_round_button.png').convert_alpha()
+        self.rrb = pygame.image.load('red_round_button.png').convert_alpha()
+
+class RedRoundButton(Circle):
+    def __init__(self,x,y,r,text,value):
+        super(RedRoundButton,self).__init__(x,y,r,text,value)
+        self.icons = Icons()
+        self.image = self.icons.rrb
+        self.type = 'rrb'
+    def render(self,screen):
+        self.image  = pygame.transform.smoothscale(self.image,(self.r*2,self.r*2))
+        screen.blit(self.image,(self.x-self.r,self.y-self.r))
+
+class YellowRoundButton(Circle):
+    def __init__(self,x,y,r,text,value):
+        super(YellowRoundButton,self).__init__(x,y,r,text,value)
+        self.icons = Icons()
+        self.image = self.icons.yrb
+        self.type = 'grb'
+    def render(self,screen):
+        self.image  = pygame.transform.smoothscale(self.image,(self.r*2,self.r*2))
+        screen.blit(self.image,(self.x-self.r,self.y-self.r))
 
 class GreenRoundButton(Circle):
     def __init__(self,x,y,r,text,value):
-        Circle.__init__(self,x,y,r,text,value)
-        # self.icons = Icons()
-        # self.image = pygame.image.load('green_round_button.png').convert_alpha()
+        super(GreenRoundButton,self).__init__(x,y,r,text,value)
+        self.icons = Icons()
+        self.grb = pygame.image.load('green_round_button.png').convert_alpha()
         self.type = 'grb'
     def render(self,screen):
-        print screen
-        image = pygame.image.load('green_round_button.png').convert_alpha()
-        image  = pygame.transform((image),(self.r,self.r))
-        screen.blit(self.image,(self.x,self.y))
-        Circle.render(self,screen)
+        self.image = pygame.image.load('green_round_button.png').convert_alpha()
+        self.image = self.icons.grb
+        self.image  = pygame.transform.smoothscale(self.image,(self.r*2,self.r*2))
+        screen.blit(self.image,(self.x-self.r,self.y-self.r))
+        # pygame.draw.lines(screen,(0,0,0),False,[(self.x-200,self.y),(self.x+200,self.y)])
+        # pygame.draw.lines(screen,(0,0,0),False,[(self.x,self.y-200),(self.x,self.y+200)])
+        # Circle.render(self,screen)
 
 # define pages
+pygame.init()
 screen1 = Screen()
 home_page = Page("Main")
 second_page = Page("Settings")
@@ -147,12 +171,14 @@ button2 = Circle(450,200,30,"Back",3)
 button3 = Circle(200,300,25,"Turn on",1)
 button4 = Rect(100,100,50,30,"Run for 5 minutes",2)
 button5 = GreenRoundButton(600,600,75,"Red",9)
+button6 = YellowRoundButton(300,300,60,"Yellow",9)
+button7 = RedRoundButton(300,500,60,"Yellow",9)
+home_page.add_input(button6)
 home_page.add_input(button5)
+home_page.add_input(button7)
 second_page.add_input(button4)
-
 home_page.add_input(button2)
 second_page.add_input(button3)
-
 
 
 # define the screen
@@ -176,7 +202,7 @@ while loop:
                 screen1.setpage(second_page)
                 screen1.refresh()
         if event.type == pygame.MOUSEBUTTONUP:
-            if screen.ssactive == True:
+            if screen1.ssactive == True:
                 screen1.clearss()
             else:
                 source_page, stuff = screen1.detect_selection(pygame.mouse.get_pos())
