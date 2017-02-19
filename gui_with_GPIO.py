@@ -1,11 +1,17 @@
 import pygame.gfxdraw,math,time
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 #GPIO Setup
-# LED_pin_red = 21
-# LED_red_mode = 1
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setup(LED_pin_red,GPIO.OUT)
+LED_pin_red = 37
+LED_pin_green = 35
+LED_pin_yellow = 33
+LED_red_output = 0
+LED_green_output =0
+LED_yellow_output = 0
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(LED_pin_red,GPIO.OUT)
+GPIO.setup(LED_pin_green,GPIO.OUT)
+GPIO.setup(LED_pin_yellow,GPIO.OUT)
 
 Q=113
 blue_color = (18, 186, 231)
@@ -178,7 +184,7 @@ home_page = Page("Main")
 second_page = Page("Settings")
 button1 = GreenRoundButton(.2,.2,.05,"Green",7)
 button2 = YellowRoundButton(.2,.5,.05,"Yellow",8)
-button3 = RedRoundButton(.2,.8,.05,"Yellow",9)
+button3 = RedRoundButton(.2,.8,.05,"Red",9)
 home_page.add_input(button1)
 home_page.add_input(button2)
 home_page.add_input(button3)
@@ -213,12 +219,16 @@ while loop:
 
     if value > 0:
         if source_page == "Main":
-            if value in [7,8,9]:
-                print "Button was hit"
-                # pass
-                # LED_red_mode ^=1
-                # GPIO.output(LED_pin_red,LED_red_mode)
-                screen1.setpage(second_page)
+            if value == 7:
+                LED_green_output ^=1
+                GPIO.output(LED_pin_green,LED_green_output)
+            if value == 8:
+                LED_yellow_output ^=1
+                GPIO.output(LED_pin_yellow,LED_yellow_output)
+            if value == 9:
+                LED_red_output ^=1
+                GPIO.output(LED_pin_red,LED_red_output)
+                # screen1.setpage(second_page)
         if source_page == "Settings":
             screen1.setpage(home_page)
 
