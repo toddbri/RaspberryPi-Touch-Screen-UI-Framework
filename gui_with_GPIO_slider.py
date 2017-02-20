@@ -6,7 +6,6 @@ try:
     onRPi = True
 except ImportError:
     pass
-print onRPi
 
 #GPIO Setup
 LED_pin_red = 37
@@ -38,6 +37,7 @@ home_page.add_input(button2)
 home_page.add_input(button3)
 home_page.add_input(button4)
 second_page.add_input(button5)
+
 # define the screen
 
 screen1.setpage(home_page)
@@ -46,25 +46,20 @@ screen1.refresh()
 loop = True
 while loop:
     value =0
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == Q:
-                loop = False
-            if event.key == 49: #pressed 1 key
-                print "switching to home page"
-                screen1.setpage(home_page)
-                screen1.refresh()
-            if event.key == 50: #pressed 2 key
-                print "switching to second page"
-                screen1.setpage(second_page)
-                screen1.refresh()
-        if event.type == pygame.MOUSEBUTTONUP:
-            if screen1.ssactive == True:
-                screen1.clearss()
-            else:
-                source_page, stuff = screen1.detect_selection(pygame.mouse.get_pos())
-                value = stuff[0]
-                text = stuff[1]
+    source_page, pair = screen1.getevent()
+    value = pair[0]
+    text = pair[1]
+
+    if source_page == "keyboard":
+        if value == Q:
+            loop = False
+            value = 0
+        if value == 49: # pressed 1 key
+            screen1.setpage(home_page)
+            value = 0
+        if value == 50: # pressed 2 key
+            screen1.setpage(second_page)
+            value =0
 
     if value > 0:
         if source_page == "Main":

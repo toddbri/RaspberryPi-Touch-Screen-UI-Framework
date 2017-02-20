@@ -12,6 +12,21 @@ class Screen(object):
         self.screen.fill(blue_color)
         pygame.display.update()
         self.page = ''
+
+    def getevent(self):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                return "keyboard", (event.key,"")
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pass
+            if event.type == pygame.MOUSEBUTTONUP:
+                if self.ssactive == True:
+                    self.clearss()
+                source_page, stuff = self.detect_selection(pygame.mouse.get_pos())
+                return source_page, stuff
+
+        return "",(0,"")
+
     def sstimeoutcheck(self):
         if time.time() - self.sstimeout > 150:
             self.ssactive = True
@@ -43,9 +58,7 @@ class Screen(object):
 
         for button in self.page.buttons:
             x,y = button.detect_selection(coords,self.width,self.height)
-
             if x >0:
-                # return self.page.title, button.detect_selection(coords,self.width,self.height)
                 return self.page.title,(x,y)
         return "",(0,"")
 
