@@ -17,15 +17,15 @@ The module is imported into user code as follows:
 
 ###   2. Screen object.
 
-In the user code the first screen object must be created before any other objects.
+In the user's code the screen object must be created before any other objects.
 
-```screen = Screen()```
+```screen_name = Screen()```
 
 ###   3. Page objects.
 
 Page objects are created after the screen object is created. Multiple page objects can be created. Each page is named by passing a string to the Page object.
 
-```page1 = Page("Home")```
+```page_name = Page("Home")```
 
 ###   4. Input Objects.
 
@@ -44,11 +44,11 @@ When each object is created is it given a location, size, label, and return valu
 
 Green Round Button:
 
-```button_name = GreenRoundButton(x, y, diameter, "Label", return_value)```
+```button_name = GreenRoundButton(x, y, diameter, "label", return_value)```
 
-Ex: button1 = GreenRoundButton(.2,.3,.05,"Label1",18)
+Ex: button1 = GreenRoundButton(.2,.3,.05,"Trigger",18)
 
-This would place a button of diameter 5% of the screen width centered at the location 20% of the screen width over and 30% of the screen height down. When pressed the framework would will return the name of the page, the button label, and return value.
+This would place a button of diameter 5% of the screen width centered at the location 20% of the screen width over and 30% of the screen height down. When pressed the framework will return the name of the page, the button label, and return value.
 
 The format is the same for the YellowRoundButton and RedRoundButton.
 
@@ -57,12 +57,43 @@ Blue Gear Button:
 
 ```button_name = BlueGear(x, y, diameter, "label", return_value)```
 
+Orange Home Button:
 
-##Installation
+```button_name = HomeButton(x, y, dimension, "label", return_value)```
+
+Slider control:
+
+```slider_name = Slider(x, y, h, w, "label",return_value)```
+
+The x, h, w values are expressed as percentage of screen width. The y value is expressed as a percentage of screen height.
+
+### Adding input objects to the page
+
+```page_name.add_input(button_name)``
+
+###   4. Changing pages.
+
+The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
+
+```screen.setpage(page_name)
+
+###   4. Refreshing the page.
+
+The page can be refreshed by calling the refresh() method on the Screen object.
+
+###   4. Detecting user input.
+
+The user's code can detect user input by calling the getevent() method on the Screen object.
+
+```source_page, return_values = screen_name.getevent()```
+
+source_page will contain the label value of the page the input object was on. The return_values variable is a tuple containing first the label of the input object detected and the specified return value set during creation of the input object.
+
+If no touch event is detected the source_page will be set to "" and the return_values to (0,""). If a physical keyboard is available the source_page value will be "keyboard" and the return_values will be (event.key,"") where event.key is the value of the key pressed.
 
 Provide code examples and explanations of how to get the project.
 
-##Tests
+##Planned Updates
 
 Describe and show how to run the tests with code examples.
 
