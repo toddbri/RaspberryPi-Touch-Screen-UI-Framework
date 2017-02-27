@@ -81,6 +81,8 @@ The displayed page is changed by calling the setpage() method on the Screen obje
 
 The page can be refreshed by calling the refresh() method on the Screen object.
 
+```screen_name.refresh()```
+
 ###   7. Detecting user input.
 
 The user's code can detect user input by calling the getevent() method on the Screen object.
