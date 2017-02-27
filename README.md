@@ -92,14 +92,23 @@ The user's code detects user input by calling the getevent() method on the Scree
 
 source_page will contain the label value of the page the input object was on. The return_values variable is a tuple containing first the label of the input object detected and the specified return value set during creation of the input object.
 
-If no touch event is detected the source_page will be set to "" and the return_values to (0,""). If a physical keyboard is available the source_page value will be "keyboard" and the return_values will be (event.key,"") where event.key is the value of the key pressed.
+If no touch event is detected the source_page will be set to "" and the return_values to (0,""). If a physical keyboard is available and a key is pressed the source_page value will be "keyboard" and the return_values will be (event.key,"") where event.key is the value of the key pressed.
 
-Provide code examples and explanations of how to get the project.
+###8. Resources.
+
+Image files for the input objects are kept in the same directory as the framework file.
+
+###8. Example user code.
+
+The file 'ExampleUserCode.py' demonstrates a simple layout with 2 pages and 8 input controls. 
 
 ##Planned Updates
 
-Describe and show how to run the tests with code examples.
+*Add the ability to change page background colors
+*Add the method to disable the screensaver function
+*Add additional input controls
+*Add a virtual keyboard for user input
+*Make the framework extensible by allowing new controls to be added via additional .py files
 
 ##License
-
-A short snippet describing the license (MIT, Apache, etc.)
+No license is required to use this framework.
