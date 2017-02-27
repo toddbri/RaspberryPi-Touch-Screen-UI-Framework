@@ -113,9 +113,13 @@ The file 'ExampleUserCode.py' demonstrates a simple layout with 2 pages and 8 in
 ##Planned Updates
 
 *Add the ability to change page background colors.
+
 *Add the method to disable the screensaver function.
+
 *Add additional input controls.
+
 *Add a virtual keyboard for user input.
+
 *Make the framework extensible by allowing new controls to be added via additional .py files.
 
 ##License
