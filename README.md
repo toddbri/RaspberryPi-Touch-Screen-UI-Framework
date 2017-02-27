@@ -29,7 +29,7 @@ Page objects are created after the screen object is created. Multiple page objec
 
 ###   4. Input Objects.
 
-Input objects can be created and added to any page. The currently supported input objects are:
+Input objects can be created and added to pages. The currently supported input objects are:
 
 * Green Round Button
 * Yellow Round Button
@@ -48,7 +48,7 @@ Green Round Button:
 
 Ex: button1 = GreenRoundButton(.2,.3,.05,"Trigger",18)
 
-This would place a button of diameter 5% of the screen width centered at the location 20% of the screen width over and 30% of the screen height down. When pressed the framework will return the name of the page, the button label, and return value.
+This example would place a button of diameter 5% of the screen width centered at the location 20% of the screen width over and 30% of the screen height down. When pressed the framework will return the name of the page, the button label, and return value.
 
 The format is the same for the YellowRoundButton and RedRoundButton.
 
@@ -69,7 +69,7 @@ The x, h, w values are expressed as percentage of screen width. The y value is e
 
 ### Adding input objects to the page
 
-```page_name.add_input(button_name)``
+```page_name.add_input(button_name)```
 
 ###   4. Changing pages.
 
