@@ -71,17 +71,17 @@ The x, h, w values are expressed as percentage of screen width. The y value is e
 
 ```page_name.add_input(button_name)```
 
-###   4. Changing pages.
+###   5. Changing pages.
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
 
-```screen.setpage(page_name)
+```screen.setpage(page_name)```
 
-###   4. Refreshing the page.
+###   6. Refreshing the page.
 
 The page can be refreshed by calling the refresh() method on the Screen object.
 
-###   4. Detecting user input.
+###   7. Detecting user input.
 
 The user's code can detect user input by calling the getevent() method on the Screen object.
 
