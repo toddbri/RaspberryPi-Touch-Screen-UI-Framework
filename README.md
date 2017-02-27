@@ -42,7 +42,7 @@ When each object is created is it given a location, size, label, and return valu
 
 #### Input object formats:
 
-Green Round Button:
+#####Green Round Button:
 
 ```button_name = GreenRoundButton(x, y, diameter, "label", return_value)```
 
@@ -53,39 +53,39 @@ This example would place a button of diameter 5% of the screen width centered at
 The format is the same for the YellowRoundButton and RedRoundButton.
 
 
-Blue Gear Button:
+#####Blue Gear Button:
 
 ```button_name = BlueGear(x, y, diameter, "label", return_value)```
 
-Orange Home Button:
+#####Orange Home Button:
 
 ```button_name = HomeButton(x, y, dimension, "label", return_value)```
 
-Slider control:
+#####Slider control:
 
 ```slider_name = Slider(x, y, h, w, "label",return_value)```
 
 The x, h, w values are expressed as percentage of screen width. The y value is expressed as a percentage of screen height.
 
-### Adding input objects to the page
+###Adding input objects to the page
 
 ```page_name.add_input(button_name)```
 
-###   5. Changing pages.
+###5. Changing pages.
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
 
 ```screen.setpage(page_name)```
 
-###   6. Refreshing the page.
+###6. Refreshing the page.
 
 The page can be refreshed by calling the refresh() method on the Screen object.
 
 ```screen_name.refresh()```
 
-###   7. Detecting user input.
+###7. Detecting user input.
 
-The user's code can detect user input by calling the getevent() method on the Screen object.
+The user's code detects user input by calling the getevent() method on the Screen object.
 
 ```source_page, return_values = screen_name.getevent()```
 
