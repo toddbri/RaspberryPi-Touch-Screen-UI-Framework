@@ -67,7 +67,7 @@ The format is the same for the YellowRoundButton and RedRoundButton.
 
 The x, h, w values are expressed as percentage of screen width. The y value is expressed as a percentage of screen height.
 
-###Adding input objects to the page
+###Adding input objects to the page.
 
 ```page_name.add_input(button_name)```
 
