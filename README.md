@@ -67,12 +67,12 @@ The format is the same for the YellowRoundButton and RedRoundButton.
 
 The x, h, w values are expressed as percentage of screen width. The y value is expressed as a percentage of screen height.
 
-###Adding input objects to the page.
+### Adding input objects to the page.
 
 ```page_name.add_input(button_name)```
 
 
-Changing Pages.
+###5. Changing Pages.
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
 
