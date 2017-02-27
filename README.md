@@ -13,7 +13,7 @@ The Framework is contained in the module TouchScreenFramework.py. The framework 
 
     The module is imported into user code as follows:
 
-    ```from TouchScreenFramework import *```
+    `from TouchScreenFramework import *`
 
 ##Installation
 
