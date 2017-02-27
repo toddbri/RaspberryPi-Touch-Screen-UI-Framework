@@ -71,6 +71,7 @@ The x, h, w values are expressed as percentage of screen width. The y value is e
 
 ```page_name.add_input(button_name)```
 
+
 ###5. Changing pages.
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
