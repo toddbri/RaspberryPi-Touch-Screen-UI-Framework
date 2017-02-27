@@ -69,7 +69,9 @@ The x, h, w values are expressed as percentage of screen width. The y value is e
 
 ### Adding input objects to the page.
 
-```page_name.add_input(button_name)```
+```
+page_name.add_input(button_name)
+```
 
 
 ###5. Changing Pages.
