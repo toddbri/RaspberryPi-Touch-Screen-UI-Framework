@@ -78,19 +78,25 @@ page_name.add_input(button_name)
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
 
-```screen.setpage(page_name)```
+```
+screen.setpage(page_name)
+```
 
 ###6. Refreshing the page.
 
 The page can be refreshed by calling the refresh() method on the Screen object.
 
-```screen_name.refresh()```
+```
+screen_name.refresh()
+```
 
 ###7. Detecting user input.
 
 The user's code detects user input by calling the getevent() method on the Screen object.
 
-```source_page, return_values = screen_name.getevent()```
+```
+source_page, return_values = screen_name.getevent()
+```
 
 source_page will contain the label value of the page the input object was on. The return_values variable is a tuple containing first the label of the input object detected and the specified return value set during creation of the input object.
 
