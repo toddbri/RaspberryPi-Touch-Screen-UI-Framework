@@ -13,7 +13,7 @@ The Framework is contained in the module TouchScreenFramework.py. The framework 
 
 The module is imported into user code as follows:
 
-```        from TouchScreenFramework import *```
+```from TouchScreenFramework import *```
 
 ###   2. Screen object.
 
@@ -27,7 +27,7 @@ Page objects are created after the screen object is created. Multiple page objec
 
 ```page_name = Page("Home")```
 
-###   4. Input Objects.
+###4. Input Objects.
 
 Input objects can be created and added to pages. The currently supported input objects are:
 
@@ -72,7 +72,7 @@ The x, h, w values are expressed as percentage of screen width. The y value is e
 ```page_name.add_input(button_name)```
 
 
-###5. Changing pages.
+Changing Pages.
 
 The displayed page is changed by calling the setpage() method on the Screen object and passing the name of the page object.
 
@@ -98,9 +98,9 @@ If no touch event is detected the source_page will be set to "" and the return_v
 
 Image files for the input objects are kept in the same directory as the framework file.
 
-###8. Example user code.
+###9. Example user code.
 
-The file 'ExampleUserCode.py' demonstrates a simple layout with 2 pages and 8 input controls. 
+The file 'ExampleUserCode.py' demonstrates a simple layout with 2 pages and 8 input controls.
 
 ##Planned Updates
 
