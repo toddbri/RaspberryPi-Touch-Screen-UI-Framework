@@ -1,23 +1,24 @@
-#Synopsis
+##Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains what the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+This is a Touch UI framework for the Raspberry Pi 3. It has only been tested with the [Raspberry Pi touch display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/) and the Raspbian Jessie distribution.
+The drivers for the RPi touch display are included in the Jessie distribution. This framework is build on the pygame module.
 
-#Code Example
+##Overview
 
-Show what the library does as concisely as possible, developers should be able to figure out how your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+The Framework is contained in the module TouchScreenFramework.py. The framework handles rendering and touch detection. The organization of the framework is as follows: The top of the hierarchy is the Screen object. The screen can contain multiple page objects. Page objects contain multiple input objects.
 
-#Motivation
+##Motivation
 
 A short description of the motivation behind the creation and maintenance of the project. This should explain why the project exists.
 
-#Installation
+##Installation
 
 Provide code examples and explanations of how to get the project.
 
-#Tests
+##Tests
 
 Describe and show how to run the tests with code examples.
 
-#License
+##License
 
 A short snippet describing the license (MIT, Apache, etc.)
