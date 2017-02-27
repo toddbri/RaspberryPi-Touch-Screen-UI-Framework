@@ -11,8 +11,9 @@ The Framework is contained in the module TouchScreenFramework.py. The framework 
 
   #Importing the module:
 
-    The module is imported into user code as follows;
-    ```        
+    The module is imported into user code as follows:
+
+    ```python        
           from TouchScreenFramework import *
     ```
 
